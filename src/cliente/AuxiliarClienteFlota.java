@@ -58,7 +58,7 @@ public class AuxiliarClienteFlota {
     * @throws IOException
     */
    public void nuevaPartida(int nf, int nc, int nb)  throws IOException {
-	   mySocket.sendMessage("1#nf#nc#nb");
+	   mySocket.sendMessage("1#"+nf+"#"+nc+"#"+nb);
    } // end nuevaPartida
 
    /**
@@ -71,8 +71,8 @@ public class AuxiliarClienteFlota {
     * @throws IOException
     */
    public int pruebaCasilla(int f, int c) throws IOException {
-	   mySocket.sendMessage("2#f#c");
-	   	return 	Integer.parseInt(mySocket.receiveMessage());
+	   mySocket.sendMessage("2#"+f+"#"+c);
+	   return Integer.parseInt(mySocket.receiveMessage());
     } // end getCasilla
    
    /**
@@ -84,8 +84,9 @@ public class AuxiliarClienteFlota {
     * @throws IOException
     */
    public String getBarco(int idBarco) throws IOException {
-	   mySocket.sendMessage("3#idBarco");
-	   return mySocket.receiveMessage();
+	   mySocket.sendMessage("3#"+idBarco);
+	   String mensaje = mySocket.receiveMessage();
+	   return mensaje;
     } // end getCasilla
    
    /**
